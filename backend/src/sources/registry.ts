@@ -3,7 +3,8 @@
 
 import type { SourceInfo } from './adapter.ts';
 import { EBAY_INFO } from './ebay/adapter.ts';
-import { CRAIGSLIST_INFO, FACEBOOK_INFO, OFFERUP_INFO } from './informational.ts';
+import { CRAIGSLIST_INFO } from './craigslist/adapter.ts';
+import { FACEBOOK_INFO, OFFERUP_INFO } from './informational.ts';
 
 export const EMAIL_INFO: SourceInfo = {
   id: 'email',

@@ -13,6 +13,7 @@ import { createApp, type App } from './app.ts';
 import { ingest } from './ingest/pipeline.ts';
 import { fromShare, ogFetch, type SharePayload } from './sources/manual/adapter.ts';
 import { parseEmail, type InboundEmail } from './sources/email/adapter.ts';
+import { fromScrapeBatch, type ScrapeBatch } from './sources/scrape/adapter.ts';
 import { SOURCE_REGISTRY } from './sources/registry.ts';
 
 const app = createApp();
@@ -29,6 +30,12 @@ const server = createServer(async (req, res) => {
 async function route(req: IncomingMessage, res: ServerResponse, app: App): Promise<void> {
   const url = new URL(req.url ?? '/', `http://localhost:${PORT}`);
   const path = url.pathname;
+
+  // CORS: the userscript POSTs to /ingest/scrape cross-origin from marketplace pages.
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
 
   if (req.method === 'GET' && path === '/healthz') return json(res, 200, { ok: true });
 
@@ -47,6 +54,16 @@ async function route(req: IncomingMessage, res: ServerResponse, app: App): Promi
     const payload = (await body(req)) as SharePayload;
     const raw = await fromShare(payload, ogFetch);
     const report = await ingest([raw], app);
+    return json(res, 200, summarize(report));
+  }
+
+  if (req.method === 'POST' && path === '/ingest/scrape') {
+    // In-browser userscript capture (Facebook / OfferUp / Craigslist). CORS-enabled so the
+    // userscript can POST cross-origin from the marketplace page.
+    if (!authorized(req, process.env.SCRAPE_INGEST_SECRET)) return json(res, 401, { error: 'unauthorized' });
+    const batch = (await body(req)) as ScrapeBatch;
+    const raws = fromScrapeBatch(batch);
+    const report = await ingest(raws, app);
     return json(res, 200, summarize(report));
   }
 

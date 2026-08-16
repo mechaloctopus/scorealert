@@ -39,12 +39,23 @@ only — never place any of these in the Android app.**
 
 1. Create an app at <https://developer.ebay.com> and get a **Client ID / Client Secret**.
 2. Set `EBAY_CLIENT_ID`, `EBAY_CLIENT_SECRET`, `EBAY_PICKUP_POSTAL_CODE=96766`.
-3. Poll:
+3. Poll all server-side collectors (eBay + Craigslist RSS):
    ```bash
-   cd backend && npm run poll:ebay
+   cd backend && npm run poll
    ```
-4. Schedule it (Cloud Scheduler / cron) at a modest interval. The queries live in
-   `src/sources/ebay/adapter.ts::defaultQueries()`.
+4. Schedule it (Cloud Scheduler / cron) at a modest interval. eBay queries live in
+   `src/sources/ebay/adapter.ts::defaultQueries()`; Craigslist categories in `.env`
+   (`CRAIGSLIST_CATEGORIES`). Craigslist needs no credentials.
+
+## 4b. Facebook Marketplace + OfferUp (userscript)
+
+These have no public API. Capture them with the userscript that runs in your own browser —
+full instructions in [`personal-collectors.md`](personal-collectors.md):
+
+1. Install Tampermonkey/Violentmonkey and add `tools/scorealert-capture.user.js`.
+2. Set the backend URL + secret (`SCRAPE_INGEST_SECRET`) from the extension menu.
+3. Browse Marketplace/OfferUp — captured listings POST to `/ingest/scrape`, get scored, and
+   push like any other source.
 
 ## 5. Firebase Cloud Messaging (push)
 

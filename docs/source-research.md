@@ -4,6 +4,16 @@ _Last researched: 2026-08. Re-verify each source's current Terms before changing
 collector status. Policies change; this document is the source of truth the code seeds
 into the `sources` table._
 
+> **Personal-use configuration (single user).** This deployment is a private tool for one
+> person, and the collectors are configured accordingly — see
+> [`personal-collectors.md`](personal-collectors.md) for exactly how Facebook, OfferUp, and
+> Craigslist are captured. Short version: **Craigslist** is polled via its own public **RSS
+> feed** (no login); **Facebook Marketplace** and **OfferUp** are captured by a **userscript
+> running in your own browser as you browse** (in-session, user-driven — not a server bot,
+> no account automation, no bot-detection evasion). The one thing intentionally *not* built
+> is a headless server-side login+scrape of Facebook/OfferUp, which would get the account
+> banned and requires anti-bot circumvention.
+
 This project follows one hard rule: **we do not scrape sources that prohibit automated
 access, and we never bypass technical controls.** Each source below is assigned a
 `SourcePolicy.status`. Only sources marked `OFFICIAL_API` or `APPROVED_FEED` are polled
@@ -158,13 +168,14 @@ own observed Kauaʻi listing history, clearly labeled as an estimate with uncert
 | --- | --- | --- | --- |
 | eBay | `OFFICIAL_API` | ✅ yes | Browse API (OAuth client creds) |
 | Email alerts | `EMAIL_ALERT` | ✅ event-driven | inbound-email webhook |
+| **Craigslist Kauaʻi** | `APPROVED_FEED` | ✅ yes | **public RSS feed** (server-side, no login) |
+| **Facebook Marketplace** | `USER_PROVIDED` | 🟡 in-session | **userscript** in your browser → `/ingest/scrape` |
+| **OfferUp** | `USER_PROVIDED` | 🟡 in-session | **userscript** in your browser → `/ingest/scrape` |
 | Manual share | `USER_PROVIDED` | ➖ user-initiated | Android Share Sheet |
-| Craigslist Kauaʻi | `NOT_ALLOWED` | ⛔ never | share / forwarded URL only |
-| Facebook Marketplace | `NOT_ALLOWED` | ⛔ never | share / user email only |
-| Facebook groups | `NOT_ALLOWED` | ⛔ never | share only |
-| OfferUp | `USER_PROVIDED` | ⛔ no auto | share / native-alert email |
 | Vehicle values | `RESEARCH_REQUIRED` | ⛔ no | licensed API TBD |
 
-**Bottom line:** In the MVP, ScoreAlert automatically monitors **eBay** and the **user's
-email alerts**, and accepts **shared** listings from everywhere else. That is the honest,
-legitimate footprint — and the admin screen says exactly this.
+**Bottom line (personal config):** ScoreAlert auto-polls **eBay**, your **email alerts**,
+and **Craigslist RSS** server-side (hands-off, phone closed). **Facebook** and **OfferUp**
+stream in from a **userscript in your own browser** while you browse — near-automatic in
+practice, without a bannable server bot. See [`personal-collectors.md`](personal-collectors.md).
+The admin screen shows each source's live state.
