@@ -1,0 +1,17 @@
+{
+  "name": "scorealert-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ScoreAlert deal-intelligence engine + ingestion backend",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node src/demo.ts",
+    "serve": "node src/server.ts",
+    "poll:ebay": "node src/jobs/poll-ebay.ts"
+  },
+  "dependencies": {}
+}

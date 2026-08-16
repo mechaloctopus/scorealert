@@ -1,0 +1,98 @@
+[
+  {
+    "sourceId": "facebook",
+    "externalId": "fb-1001",
+    "url": "https://www.facebook.com/marketplace/item/1001",
+    "title": "2006 Toyota Tacoma - runs and drives",
+    "description": "2006 Toyota Tacoma, 184k miles. Runs and drives, needs a starter soon. Clean title, registration current, safety current. 4x4, automatic. Located in Līhuʻe. Must sell, leaving island. $1,500 obo.",
+    "price": 1500,
+    "currency": "USD",
+    "locationText": "Lihue, Kauai",
+    "imageUrls": ["https://example.invalid/tacoma1.jpg", "https://example.invalid/tacoma2.jpg"],
+    "postedAt": "MINUS_3_MIN"
+  },
+  {
+    "sourceId": "craigslist",
+    "externalId": "cl-2001",
+    "url": "https://honolulu.craigslist.org/kau/cto/2001.html",
+    "title": "2006 Toyota Tacoma 4x4 - Lihue",
+    "description": "06 Tacoma, 184,000 miles. Runs & drives. Needs starter. Clean title, current reg. Automatic. $1,500. Call 808-555-0142. Leaving island must go.",
+    "price": 1500,
+    "currency": "USD",
+    "locationText": "Lihue",
+    "imageUrls": ["https://example.invalid/cl-tacoma.jpg"],
+    "postedAt": "MINUS_20_MIN"
+  },
+  {
+    "sourceId": "facebook",
+    "externalId": "fb-1002",
+    "url": "https://www.facebook.com/marketplace/item/1002",
+    "title": "FREE lumber - curb alert Kapaa",
+    "description": "Free lumber and plywood, curb alert. First come first served, you haul. Good condition, must go today. Kapaʻa near the bypass.",
+    "price": 0,
+    "currency": "USD",
+    "locationText": "Kapaa, Kauai",
+    "imageUrls": ["https://example.invalid/lumber.jpg"],
+    "postedAt": "MINUS_8_MIN"
+  },
+  {
+    "sourceId": "offerup",
+    "externalId": "ou-3001",
+    "url": "https://offerup.com/item/detail/3001",
+    "title": "2010 Honda CR-V",
+    "description": "2010 Honda CR-V, 201k miles. Runs great, front wheel bearing noise. AWD automatic. Registration expired. $3,200.",
+    "price": 3200,
+    "currency": "USD",
+    "locationText": "Kapaa",
+    "imageUrls": ["https://example.invalid/crv.jpg"],
+    "postedAt": "MINUS_2_HOUR"
+  },
+  {
+    "sourceId": "facebook",
+    "externalId": "fb-1003",
+    "url": "https://www.facebook.com/marketplace/item/1003",
+    "title": "16ft aluminum fishing boat with trailer",
+    "description": "16 foot aluminum skiff, fishing boat. Comes with trailer. Motor runs. $2,800 obo. Located Nawiliwili harbor Lihue.",
+    "price": 2800,
+    "currency": "USD",
+    "locationText": "Lihue",
+    "imageUrls": ["https://example.invalid/boat.jpg"],
+    "postedAt": "MINUS_45_MIN"
+  },
+  {
+    "sourceId": "craigslist",
+    "externalId": "cl-2002",
+    "url": "https://honolulu.craigslist.org/kau/mcy/2002.html",
+    "title": "Yamaha dual sport 250 - Kapaa",
+    "description": "Yamaha dual sport, 250cc. Runs and drives great. Current registration and safety. $2,100. Fun island bike.",
+    "price": 2100,
+    "currency": "USD",
+    "locationText": "Kapaa",
+    "imageUrls": ["https://example.invalid/moto.jpg"],
+    "postedAt": "MINUS_15_MIN"
+  },
+  {
+    "sourceId": "facebook",
+    "externalId": "fb-1004",
+    "url": "https://www.facebook.com/marketplace/item/1004",
+    "title": "2003 Ford Explorer - parts car",
+    "description": "2003 Ford Explorer, blown head gasket, overheating, does not start. Parts car / mechanic special. Salvage title. $600.",
+    "price": 600,
+    "currency": "USD",
+    "locationText": "Waimea",
+    "imageUrls": ["https://example.invalid/explorer.jpg"],
+    "postedAt": "MINUS_5_DAY"
+  },
+  {
+    "sourceId": "offerup",
+    "externalId": "ou-3002",
+    "url": "https://offerup.com/item/detail/3002",
+    "title": "Toyota Corolla 2005 - Oahu",
+    "description": "2005 Toyota Corolla, 150k, runs and drives, clean title. $2,500. Located Honolulu Oahu, can ship interisland.",
+    "price": 2500,
+    "currency": "USD",
+    "locationText": "Honolulu, Oahu",
+    "imageUrls": ["https://example.invalid/corolla.jpg"],
+    "postedAt": "MINUS_30_MIN"
+  }
+]

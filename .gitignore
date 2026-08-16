@@ -1,0 +1,30 @@
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.local
+*.log
+
+# Secrets / credentials — NEVER commit
+service-account*.json
+*serviceAccount*.json
+google-services.json
+.env.*
+!.env.example
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/captures/
+*.apk
+*.aab
+*.keystore
+!debug.keystore
+
+# OS
+.DS_Store
+Thumbs.db
