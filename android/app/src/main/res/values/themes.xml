@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base app theme. Compose drives the real colors (ui/theme/Theme.kt); this exists
+         for the launch/splash window and system bars. -->
+    <style name="Theme.ScoreAlert" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/scorealert_ink</item>
+        <item name="android:navigationBarColor">@color/scorealert_ink</item>
+        <item name="android:windowBackground">@color/scorealert_ink</item>
+    </style>
+</resources>
